@@ -1,0 +1,7 @@
+{
+  "name": "specnoo",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
