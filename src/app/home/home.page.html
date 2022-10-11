@@ -1,20 +1,111 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+ 
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+  <div >
+    <h2 class="heading">All Offices</h2>
+<div  *ngFor="let office of Offices" >
+  <ion-accordion-group style="border-left: 10px solid {{office.firstcolor}};"  class="group">
+    <ion-accordion  toggleIconSlot="enjd"  value="first">
+
+      <ion-item slot="header" color="light" >
+        <div>
+          <!-- card header -->
+          <div style="display: flex; gap: 188px; ">
+            <div>
+              <ion-label class="companyName">{{office.officeName}}</ion-label><br>
+            </div>
+
+            <div style="margin-top: 9px;">
+              <ion-icon name="pencil-outline"  routerLink='/add-office/{{office.id}}'  ></ion-icon>
+            </div>
+          </div>
+          <!-- Members number of staff -->
+          
+          <div class="members">
+            <div>
+              <img class="staff" src="assets/staff2.png" alt="">
+            </div>
+            <div>
+              <p class="firstParagraph">
+                {{office.capacity}} Staff Members in Office
+              </p>
+              
+            </div>
+          </div>
+          <!-- more info -->
+          <hr style=" border: px solid black; height: -0; margin-top: -20px; width: 450px; margin-left: 18px; padding-left: -260px; "><br>
+          <div style="margin-top: -10px; font-size:12px; border-top: 0.4px solid #0D4477; padding-left: 100px; padding-top: 10px; display: flex; gap: 5px;">
+            <div>
+              <p>More info</p>
+            </div>
+
+            <div style="margin-top: 13px;">
+                <ion-icon name="chevron-up-outline" (click)="toggle(key)" *ngIf="!visible.includes(key)"></ion-icon> 
+                <ion-icon name="chevron-down-outline"(click)="toggle(key)" *ngIf="visible.includes(key)"></ion-icon> 
+            </div>
+          </div>
+        </div>
+     
+      </ion-item>
+<!-- After more info clicked -->
+      <div class="ion-padding" slot="content" >
+        <!-- First  -->
+        <div style="display: flex; gap: 10px; margin-bottom: 10px;">
+          <div>
+            <ion-icon name="call-outline"></ion-icon> 
+          </div>
+          <div style="font-size: 12px; color: #484954; margin-bottom:5px;">
+           {{office.phoneNumber}}
+          </div>
+          
+        </div>
+        <!-- second -->
+        <div style="display: flex; gap: 10px; margin-bottom: 10px;">
+          <div>
+            <ion-icon name="mail-outline"></ion-icon>
+          </div>
+          
+          <div style="font-size: 12px; color: #484954; margin-bottom:5px;">
+            {{office.emailAddress}}
+          </div>
+        </div>
+        <!-- Third -->
+        <div style="display: flex; gap: 10px; margin-bottom: 10px;">
+          <div>
+            <ion-icon name="people-outline"></ion-icon>
+          </div>
+          
+          <div style="font-size: 12px; color: #484954; margin-bottom:5px;">
+            Office capacity: {{office.capacity}}
+          </div>
+        </div >
+        <!-- Forth -->
+        <div style="display: flex; gap: 10px; margin-bottom: 10px;">
+          <div>
+            <ion-icon name="location-outline"></ion-icon>
+          </div>
+          
+          <div style="font-size: 12px; color: #484954; margin-bottom:5px;">
+            {{office.physicalAddress}}
+          </div>
+        </div>
+        <ion-button [routerLink]="['/add-office/', office.id]" routerLink='/add-office/{{office.id}}' >sdfsar</ion-button>
+
+      </div>
+    </ion-accordion>
+   <!-- <ion-button (click)="delete_office(office.id)"></ion-button> -->
+ <!-- <ion-button routerLink="/add-office/{{office.id}}">sdfsar</ion-button> -->
+  </ion-accordion-group>
+</div>
+   
   </div>
+
+  <ion-fab routerLink="/add-office/add" vertical="bottom" horizontal="end" slot="fixed"  >
+    <ion-fab-button style="--background: #0D4477;" >
+      <ion-icon name="add-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
 </ion-content>

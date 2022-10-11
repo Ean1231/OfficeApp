@@ -1,0 +1,72 @@
+
+
+<ion-content>
+  <div style="display: flex; ">
+
+    <div>
+      <ion-icon name="arrow-back-outline" class="ion-padding" routerLink="/home"></ion-icon>
+    </div>
+
+    <div style="margin-top: -10px; ">
+      <h3 class="ion-padding"> New Office</h3>
+    </div>
+    
+  </div>
+  <h3>{{isEdit ? 'Edit Office' : 'Add Office'}}</h3>
+
+<div class="main-section">
+ 
+<div class="form ion-padding ion-margin">
+
+  <ion-input [(ngModel)]="officeName" type="text" placeholder="Office Name"></ion-input>
+  <ion-input [(ngModel)]="physicalAddress" type="text" placeholder="Physical Address"></ion-input>
+  <ion-input [(ngModel)]="emailAddress"type="text" placeholder="Email Address"></ion-input>
+  <ion-input [(ngModel)]="phoneNumber" type="number" placeholder="Phone Number"></ion-input>
+  <ion-input [(ngModel)]="capacity" type="number" placeholder="Maximum Capacity"></ion-input>
+ 
+  <h3 class="ion-padding">Office Colors</h3>
+
+          <!-- Colors -->
+  <div style="display: flex; align-items: center; margin-left:-20px;">
+
+    <div class="firstRowCircles" (click)="firstColor()">
+      <ion-input readonly class="chart1"  name="firstcolor"  >
+      </ion-input>
+  </div>
+  
+    
+    <div (click)="secondColor()">
+     <ion-input readonly class="chart2"  name="secondcolor"  >
+     </ion-input>
+    </div>
+  
+    <div (click)="thirdColor()">
+      <ion-input readonly class="chart3"  name="thirdcolor"  >
+      </ion-input>
+     </div>
+  
+     <div (click)="fouthColor()">
+      <ion-input readonly class="chart4"  name="fourthcolor" >
+      </ion-input>
+     </div>
+  
+     <div (click)="fifthColor()">
+      <ion-input readonly class="chart5"  name="fifthcolor" >
+      </ion-input>
+     </div>
+  
+     <div (click)="sixthColor()">
+      <ion-input readonly class="chart6"  name="sixthcolor" >
+      </ion-input>
+     </div>
+  </div>
+  </div>
+
+ 
+
+
+  <br><br>
+
+<ion-button (click)="addOffice()" >{{isEdit ? 'Edit' : 'Add'}} &nbsp;<ion-spinner *ngIf="loading"></ion-spinner></ion-button>
+</div>
+</ion-content>
