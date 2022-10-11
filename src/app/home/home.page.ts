@@ -45,6 +45,7 @@ export class HomePage {
   delete_office(officeId){
     this.service.delete_office(officeId).then((r: any) => {
       console.log(r)
+      this.router.navigateByUrl('/home');
     })
   }
 

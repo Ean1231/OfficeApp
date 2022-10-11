@@ -11,7 +11,7 @@ import { FirebaseService } from '../firebase.service';
 })
 export class AddOfficePage implements OnInit {
 firstcolor :any;
-
+load: boolean;
 
   isEdit: boolean;
   officeName: string;
@@ -23,9 +23,26 @@ firstcolor :any;
   id: any;
   type: string;
   loading: boolean;
-
+  Offices: any;
 
   constructor(private router: Router,private route: ActivatedRoute, public service: FirebaseService) { 
+    this.service.getOffices().subscribe((res) => {
+      this.Offices = res.map(e => {
+       return{
+         id: e.payload.doc.id,
+         officeName: e.payload.doc.data()['officeName'],
+         physicalAddress: e.payload.doc.data()['physicalAddress'],
+         emailAddress: e.payload.doc.data()['emailAddress'],
+         phoneNumber: e.payload.doc.data()['phoneNumber'],
+         capacity: e.payload.doc.data()['capacity'],
+         firstcolor: e.payload.doc.data()['firstcolor']
+       }
+      })
+      console.log(this.Offices);
+   },(error:any) => {
+     console.log(error)
+   }
+   )
 
 
   }
@@ -85,6 +102,27 @@ firstcolor :any;
     console.log(color6);
   }
 
+  seventhColor(){
+    let color7 = this.firstcolor = "#A9F0D1"
+    console.log(color7);
+  }
+  eigthColor(){
+    let color8 = this.firstcolor = "#00B402"
+    console.log(color8);
+  }
+  ninethColor(){
+    let color9 = this.firstcolor = "#489DDA"
+    console.log(color9);
+  }
+  tenthColor(){
+    let color10 = this.firstcolor = "#0072E8"
+    console.log(color10);
+  }
+  elevethColor(){
+    let color11 = this.firstcolor = "#8338EC"
+    console.log(color11);
+  }
+
 
   addOffice(){
     this.loading = true;
@@ -126,6 +164,13 @@ firstcolor :any;
     })
   }
 
-  
+  delete_office(officeId){
+    this.load = true;
+    this.service.delete_office(officeId).then((r: any) => {
+      console.log(r)
+      this.load = false;
+      this.router.navigateByUrl('/home');
+    })
+  }
   
 }

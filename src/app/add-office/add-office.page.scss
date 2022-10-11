@@ -23,7 +23,6 @@ ion-input{
     // position: absolute;
     margin: 10px;
     width: 40px;
-    border: 1px solid black;
     height: 40px;
     right: 0;
     border-radius: 100px;
@@ -36,7 +35,6 @@ ion-input{
     margin: 10px;
     background-color:#FF9B71;
     width: 40px;
-    border: 1px solid black;
     height: 40px;
     right: 0;
     border-radius: 100px;
@@ -48,7 +46,6 @@ ion-input{
     margin: 10px;
     background-color: #FB5607;
     width: 40px;
-    border: 1px solid black;
     height: 40px;
     right: 0;
     border-radius: 100px;
@@ -59,7 +56,6 @@ ion-input{
     // position: absolute;
     margin: 10px;
     width: 40px;
-    border: 1px solid black;
     height: 40px;
     right: 0;
     background-color: #97512C;
@@ -71,7 +67,6 @@ ion-input{
     // position: absolute;
     margin: 10px;
     width: 40px;
-    border: 1px solid black;
     background-color: #DBBADD;
     height: 40px;
     right: 0;
@@ -83,7 +78,6 @@ ion-input{
     // position: absolute;
     margin: 10px;
     width: 40px;
-    border: 1px solid black;
     background-color: #FF006E;
     height: 40px;
     right: 0;
@@ -94,4 +88,77 @@ ion-input{
 .firstRowCircles{
     margin: -0px;
     display: flex;
+}
+
+.chart7 {
+    // position: absolute;
+    margin: 10px;
+    width: 40px;
+    height: 40px;
+    right: 0;
+    border-radius: 100px;
+    -moz-border-radius: 100px;
+    -webkit-border-radius: 100px;
+    background-color:#A9F0D1;
+}
+.chart8 {
+    // position: absolute;
+    margin: 10px;
+    background-color: #00B402;
+    width: 40px;
+    height: 40px;
+    right: 0;
+    border-radius: 100px;
+    -moz-border-radius: 100px;
+    -webkit-border-radius: 100px;
+}
+.chart9 {
+    // position: absolute;
+    margin: 10px;
+    background-color: #489DDA;
+    width: 40px;
+    height: 40px;
+    right: 0;
+    border-radius: 100px;
+    -moz-border-radius: 100px;
+    -webkit-border-radius: 100px;
+}
+.chart10 {
+    // position: absolute;
+    margin: 10px;
+    width: 40px;
+    height: 40px;
+    right: 0;
+    background-color: #0072E8;
+    border-radius: 100px;
+    -moz-border-radius: 100px;
+    -webkit-border-radius: 100px;
+}
+.chart11 {
+    // position: absolute;
+    margin: 10px;
+    width: 40px;
+    background-color:  #8338EC;
+    height: 40px;
+    right: 0;
+    border-radius: 150px;
+    -moz-border-radius: 100px;
+    -webkit-border-radius: 100px;
+}
+.button1{
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+padding: 1px;
+
+
+width: 232px;
+height: 48px;
+
+/* Specno Blue */
+
+background-color: #489DDA;
+border-radius: 100px;
+margin-left: 87px;
 }
