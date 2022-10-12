@@ -1,10 +1,16 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>office-view</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div>
+    <ion-icon name="arrow-back-outline" class="ion-padding" routerLink="/home"></ion-icon>
+  </div>
 
 
-<ion-content [fullscreen]="true">
-  <div >
-    <h2 class="heading">All Offices</h2>
-<div  *ngFor="let office of Offices" >
-  <ion-accordion-group style="border-left: 10px solid {{office.firstcolor}}"  class="group">
+  <ion-accordion-group style="border-left: 10px solid {{firstcolor}}"  class="group">
     <ion-accordion  toggleIconSlot="enjd"  value="first">
 
       <ion-item slot="header" color="light" >
@@ -12,22 +18,22 @@
           <!-- card header -->
           <div style="display: flex; gap: 188px; ">
             <div>
-              <ion-label class="companyName">{{office.officeName}}</ion-label><br>
+              <ion-label class="companyName">{{officeName}}</ion-label><br>
             </div>
 
             <div style="margin-top: 9px;">
-              <ion-icon name="pencil-outline"  routerLink='/add-office/{{office.id}}'  ></ion-icon>
+              <ion-icon name="pencil-outline"  routerLink='/add-office/{{id}}' ></ion-icon>
             </div>
           </div>
           <!-- Members number of staff -->
           
           <div class="members">
             <div>
-              <img routerLink='/office-view/{{office.id}}'  class="staff" src="assets/staff2.png" alt="">
+              <img routerLink='/office-view/{{id}}'  class="staff" src="assets/staff2.png" alt="">
             </div>
             <div>
               <p class="firstParagraph">
-                {{office.capacity}} Staff Members in Office
+                {{capacity}} Staff Members in Office
               </p>
             </div>
           </div>
@@ -53,7 +59,7 @@
             <ion-icon name="call-outline"></ion-icon> 
           </div>
           <div style="font-size: 12px; color: #484954; margin-bottom:5px;">
-           {{office.phoneNumber}}
+           {{phoneNumber}}
           </div>
           
         </div>
@@ -64,7 +70,7 @@
           </div>
           
           <div style="font-size: 12px; color: #484954; margin-bottom:5px;">
-            {{office.emailAddress}}
+            {{emailAddress}}
           </div>
         </div>
         <!-- Third -->
@@ -74,7 +80,7 @@
           </div>
           
           <div style="font-size: 12px; color: #484954; margin-bottom:5px;">
-            Office capacity: {{office.capacity}}
+            Office capacity: {{capacity}}
           </div>
         </div >
         <!-- Forth -->
@@ -84,7 +90,7 @@
           </div>
           
           <div style="font-size: 12px; color: #484954; margin-bottom:5px;">
-            {{office.physicalAddress}}
+            {{physicalAddress}}
           </div>
         </div>
         <!-- <ion-button  routerLink='/add-office/{{office.id}}' >sdfsar</ion-button> -->
@@ -94,14 +100,5 @@
    <!-- <ion-button (click)="delete_office(office.id)"></ion-button> -->
  <!-- <ion-button routerLink="/add-office/{{office.id}}">sdfsar</ion-button> -->
   </ion-accordion-group>
-</div>
-   
-  </div>
-
-  <ion-fab routerLink="/add-office/add" vertical="bottom" horizontal="end" slot="fixed"  >
-    <ion-fab-button style="--background: #0D4477;" >
-      <ion-icon name="add-outline"></ion-icon>
-    </ion-fab-button>
-  </ion-fab>
 
 </ion-content>

@@ -15,6 +15,10 @@ const routes: Routes = [
     path: 'add-office/:type',
     loadChildren: () => import('./add-office/add-office.module').then( m => m.AddOfficePageModule)
   },
+  {
+    path: 'office-view/:type',
+    loadChildren: () => import('./office-view/office-view.module').then( m => m.OfficeViewPageModule)
+  },
 ];
 
 @NgModule({

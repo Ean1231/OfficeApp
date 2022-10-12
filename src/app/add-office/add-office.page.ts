@@ -68,7 +68,7 @@ load: boolean;
       
       console.log(data.type);
      
-    
+
     })
   }
 
@@ -145,9 +145,9 @@ load: boolean;
     },(error:any) => {
       console.log(error)
     })
-
   }
   
+
   updateOffice() {
     let data = {
       officeName: this.officeName,
@@ -163,6 +163,7 @@ load: boolean;
       this.router.navigateByUrl('/home');
     })
   }
+
 
   delete_office(officeId){
     this.load = true;

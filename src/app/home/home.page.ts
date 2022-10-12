@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute, NavigationExtras } from '@angular/router';
 import { FirebaseService } from '../firebase.service';
 
 @Component({
@@ -9,7 +9,8 @@ import { FirebaseService } from '../firebase.service';
 })
 export class HomePage {
   Offices: any;
-
+ad: any;
+officeData: any;
   private visible = []; 
 
   constructor(public service: FirebaseService, private router: Router, private route: ActivatedRoute) {
@@ -25,7 +26,7 @@ export class HomePage {
           firstcolor: e.payload.doc.data()['firstcolor']
         }
        })
-       console.log(this.Offices);
+      //  console.log(this.Offices);
     },(error:any) => {
       console.log(error)
     }
@@ -48,6 +49,23 @@ export class HomePage {
       this.router.navigateByUrl('/home');
     })
   }
+
+   details(){
+    // this.router.navigateByUrl('/dynamic', { state: { id:1 , name:'Angular' } });
+    this.router.navigateByUrl('/office-view', {state:this.Offices});
+    console.log(this.Offices)
+
+    this.service.get_single_office(this.Offices).subscribe((officeData:any) => {
+      const navigationExtras: NavigationExtras = {
+        queryParams: {
+          data: this.officeData
+        }
+      };
+      console.log(navigationExtras);
+    })
+   
+  }
+
 
 
 }
