@@ -1,19 +1,20 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>office-view</ion-title>
-  </ion-toolbar>
-</ion-header>
 
 <ion-content>
-  <div>
-    <ion-icon name="arrow-back-outline" class="ion-padding" routerLink="/home"></ion-icon>
+  <div style="display: flex; gap: 100px;">
+    <div>
+      <ion-icon class="arrow-icon" style="margin-top: 5px;" name="arrow-back-outline" class="ion-padding" routerLink="/home"></ion-icon>
+    </div>
+    <div>
+      <h3>Office</h3>
+    </div>
+     
   </div>
 
 
   <ion-accordion-group style="border-left: 10px solid {{firstcolor}}"  class="group">
     <ion-accordion  toggleIconSlot="enjd"  value="first">
 
-      <ion-item slot="header" color="light" >
+      <ion-item slot="header" class="accordion" >
         <div>
           <!-- card header -->
           <div style="display: flex; gap: 188px; ">
@@ -51,7 +52,8 @@
           </div>
         </div>
       </ion-item>
-<!-- After more info clicked -->
+
+        <!-- After more info clicked -->
       <div class="ion-padding" slot="content" >
         <!-- First  -->
         <div style="display: flex; gap: 10px; margin-bottom: 10px;">
@@ -93,12 +95,119 @@
             {{physicalAddress}}
           </div>
         </div>
-        <!-- <ion-button  routerLink='/add-office/{{office.id}}' >sdfsar</ion-button> -->
 
       </div>
     </ion-accordion>
-   <!-- <ion-button (click)="delete_office(office.id)"></ion-button> -->
- <!-- <ion-button routerLink="/add-office/{{office.id}}">sdfsar</ion-button> -->
+
   </ion-accordion-group>
 
+  <ion-searchbar placeholder="Search" [(ngModel)]="search" showCancelButton="focus" animated>
+    
+  </ion-searchbar>
+
+  <div style="display: flex; gap: 80px; margin:15px;">
+    <h3 >
+     <b>Staff Members in Office </b> 
+    </h3>
+    <h3 style="margin-top: 17px;">{{capacity}}</h3> 
+  </div>
+                              <!-- Display staff members -->
+
+  <ion-list style="margin: 15px;">
+    <ion-item *ngFor="let employee of employees | filter:search" >
+      <ion-label>
+        <div style="display: flex; gap: 10px;">
+          <img class="chart1" name="avatar1"  src="{{employee.avatar}}" alt=""><br><br>
+          <div style="display: flex; margin-top: 10px; gap:7px;">
+            <div>
+              <h1 style=""> {{ employee.firstname }}</h1>
+            </div>
+            <div>
+              <h1>{{employee.lastname}}</h1>
+            </div>
+          </div>
+           
+          <ion-icon style=" right: 0; position: absolute; margin-top:20px; color: red;" name="trash-outline" (click)="delete_employee(employee.id)"> </ion-icon>
+          <ion-icon routerLink='open-custom-dialog/{{employee.id}}' style=" right: 27px; position: absolute; margin-top:20px; color: blue; "  name="create-outline"></ion-icon>
+        </div>
+        
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+
+  <ion-modal id="example-modal" #modal trigger="open-custom-dialog" >
+    <ng-template>
+      <div class="wrapper">
+        <div style="display: flex;">
+          
+          <h1>New staff member</h1>
+          <ion-icon (click)="modal.dismiss()" name="close-circle-outline" size="small" ></ion-icon>
+        </div>
+       
+        <ion-list lines="none">
+          <ion-item button="true" detail="false" >
+  
+            <ion-input [(ngModel)]="firstname" name="firstname" placeholder="First name"></ion-input>
+          </ion-item>
+          <ion-item button="true" detail="false" >
+            <ion-input name="lastname" [(ngModel)]="lastname" placeholder="Last Name"></ion-input>
+          </ion-item>
+         
+        </ion-list>
+          <h1>Avatar</h1>
+          <div style="display: flex; align-items: center; margin-left: 15px;">
+
+            <div class="firstRowCircles" (click)="firstAvatar()">
+              <img class="chart1"   src="../../assets/avatar-1295404__340.webp" alt=""><br><br>
+          </div>
+          
+            <div (click)="secondAvatar()">
+              <img class="chart2" src="../../assets/avatar2.png" alt="sds"><br><br>
+            </div>
+          
+             <div (click)="fouthAvatar()">
+              <img class="chart3" src="../../assets/png-clipart-metro-redux-playstation-4-gnome-computer-icons-xbox-360-gnome-hat-playstation-4.png" alt="sds"><br><br>
+             </div>
+          
+             <div (click)="fifthAvatar()">
+              <img class="chart4" src="../../assets/png-clipart-leafyishere-youtuber-drawing-portrait-miscellaneous-face.png" alt="sds"><br><br>
+             </div>
+             
+            
+          </div>
+        
+          <div style="display: flex; align-items: center; margin-left: 35px;">
+
+            <div class="firstRowCircles" (click)="fifthAvatar()">
+              <img class="chart5"  src="../../assets/png-clipart-fortnite-battle-royale-playstation-4-playerunknown-s-battlegrounds-xbox-one-ninja-hat-video-game.png" alt="sds"><br><br>
+
+          </div>
+          
+            
+            <div (click)="sixthAvatar()">
+              <img class="chart6"  src="../../assets/iceman.png" alt="sds"><br><br>
+
+            </div>
+            <div (click)="seventhAvatar()">
+              <img class="chart7"  src="../../assets/spid.png" alt="sds"><br><br>
+
+            </div>
+           </div>
+       
+        <ion-button style="margin-left: 20%; border-radius: 25PX;" (click)="addEmployees(); model.dismiss() ">ADD STAFF MEMBER</ion-button>
+        
+     
+      </div>
+    </ng-template>
+  </ion-modal>
+
+ 
+
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed"  >
+    <ion-fab-button id="open-custom-dialog"  style="--background: #0D4477;" >
+      <ion-icon name="add-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>

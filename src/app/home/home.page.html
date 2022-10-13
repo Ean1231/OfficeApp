@@ -2,28 +2,34 @@
 
 <ion-content [fullscreen]="true">
   <div >
-    <h2 class="heading">All Offices</h2>
+    <h1 class="heading">All Offices</h1><br>
 <div  *ngFor="let office of Offices" >
-  <ion-accordion-group style="border-left: 10px solid {{office.firstcolor}}"  class="group">
-    <ion-accordion  toggleIconSlot="enjd"  value="first">
+  <ion-accordion-group style="border-left: 10px solid {{office.firstcolor}};"  class="group">
+    <ion-accordion class="accordion"  toggleIconSlot="enjd"  value="first"  >
 
-      <ion-item slot="header" color="light" >
+      <ion-item slot="header"  style="padding: 5px;">
         <div>
           <!-- card header -->
           <div style="display: flex; gap: 188px; ">
-            <div>
+            <div >
               <ion-label class="companyName">{{office.officeName}}</ion-label><br>
             </div>
+            <div style="display: flex; gap: 30px; margin-top: 20px;">
+              <div>
+                <ion-icon name="pencil-outline"  style=" right: 15; position: absolute; color: #0D4477;" routerLink='/add-office/{{office.id}}' ></ion-icon>
+              </div>
 
-            <div style="margin-top: 9px;">
-              <ion-icon name="pencil-outline"  routerLink='/add-office/{{office.id}}'  ></ion-icon>
+              <div >   
+                <ion-icon  style=" left: 115; position: absolute; color: #0D4477;"  name="eye-outline" routerLink='/office-view/{{office.id}}' ></ion-icon>
+              </div>
             </div>
+            
           </div>
           <!-- Members number of staff -->
           
           <div class="members">
             <div>
-              <img routerLink='/office-view/{{office.id}}'  class="staff" src="assets/staff2.png" alt="">
+              <img   class="staff" src="assets/staff2.png" alt="">
             </div>
             <div>
               <p class="firstParagraph">
@@ -39,8 +45,8 @@
             </div>
 
             <div style="margin-top: 13px;">
-                <ion-icon name="chevron-up-outline" (click)="toggle(key)" *ngIf="!visible.includes(key)"></ion-icon> 
-                <ion-icon name="chevron-down-outline"(click)="toggle(key)" *ngIf="visible.includes(key)"></ion-icon> 
+                <ion-icon name="chevron-up-outline" (click)="toggle(key)" *ngIf="!visible.includes(key)" style="color: #0D4477;"></ion-icon> 
+                <ion-icon name="chevron-down-outline"(click)="toggle(key)" *ngIf="visible.includes(key)" style="color: #0D4477;"></ion-icon> 
             </div>
           </div>
         </div>

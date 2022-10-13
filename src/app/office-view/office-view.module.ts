@@ -8,11 +8,14 @@ import { OfficeViewPageRoutingModule } from './office-view-routing.module';
 
 import { OfficeViewPage } from './office-view.page';
 
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
+    Ng2SearchPipeModule,
     OfficeViewPageRoutingModule
   ],
   declarations: [OfficeViewPage]

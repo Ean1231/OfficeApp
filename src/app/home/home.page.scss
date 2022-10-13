@@ -1,5 +1,5 @@
 ion-content{
-  --background: #E5E5E5;
+  --background: white;
 }
 
 #container {
@@ -109,4 +109,10 @@ opacity: 0.4;
 }
 .lastCardContent{
   display: flex;
+}
+.accordion{
+  --background:white; 
+  border-top: 0.4px solid rgba(232, 243, 252, 1); 
+  border-bottom: 0.1px solid rgba(232, 243, 252, 1); 
+  border-right: 0.1px solid rgba(232, 243, 252, 1);
 }

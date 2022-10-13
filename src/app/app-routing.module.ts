@@ -19,6 +19,10 @@ const routes: Routes = [
     path: 'office-view/:type',
     loadChildren: () => import('./office-view/office-view.module').then( m => m.OfficeViewPageModule)
   },
+  {
+    path: 'employees',
+    loadChildren: () => import('./employees/employees.module').then( m => m.EmployeesPageModule)
+  },
 ];
 
 @NgModule({
