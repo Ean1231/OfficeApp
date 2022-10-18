@@ -96,7 +96,6 @@ export class OfficeViewPage implements OnInit {
         })
       }
 
-      console.log(data.type);
     })
 
     this.route.params.subscribe((data:any) => {
@@ -113,7 +112,6 @@ export class OfficeViewPage implements OnInit {
          
         })
       }
-      console.log(data.type);
     })
   }
 
@@ -126,7 +124,8 @@ export class OfficeViewPage implements OnInit {
     this.service.addEmployee(data).then((res: any) => {
       console.log(res);
       this.firstname = "";
-      this.lastname = ""
+      this.lastname = "";
+      this.router.navigateByUrl('/office-view');
     },(error:any) => {
       console.log(error, "error")
     })
