@@ -1,8 +1,7 @@
-
 <ion-content>
   <div style="display: flex; gap: 100px;">
     <div>
-      <ion-icon class="arrow-icon"  name="arrow-back-outline" class="ion-padding" routerLink="/home"></ion-icon>
+      <ion-icon class="arrow-icon" name="arrow-back-outline" class="ion-padding" routerLink="/home"></ion-icon>
     </div>
     <div>
       <h3>Office</h3>
@@ -10,25 +9,24 @@
   </div>
 
 
-  <ion-accordion-group style="border-left: 10px solid {{firstcolor}}"  class="group">
-    <ion-accordion toggleIconSlot="enjd"  value="first">
-      <ion-item slot="header" class="accordion" >
+  <ion-accordion-group style="border-left: 10px solid {{firstcolor}}" class="group">
+    <ion-accordion toggleIconSlot="enjd" value="first">
+      <ion-item slot="header" class="accordion">
         <div>
           <!-- card header -->
           <div style="display: flex; gap: 188px; ">
             <div>
               <ion-label class="companyName">{{officeName}}</ion-label><br>
             </div>
-
             <div style="margin-top: 9px;">
-              <ion-icon name="pencil-outline"  routerLink='/add-office/{{id}}' ></ion-icon>
+              <ion-icon name="pencil-outline" routerLink='/add-office/{{id}}'></ion-icon>
             </div>
           </div>
 
           <!-- Members number of staff -->
           <div class="members">
             <div>
-              <img routerLink='/office-view/{{id}}'  class="staff" src="assets/staff2.png" alt="">
+              <img routerLink='/office-view/{{id}}' class="staff" src="assets/staff2.png" alt="">
             </div>
             <div>
               <p class="firstParagraph">
@@ -42,33 +40,32 @@
             <div>
               <p>More info</p>
             </div>
-
             <div class="Arrow_div">
-                <ion-icon name="chevron-up-outline" (click)="toggle(key)" *ngIf="!visible.includes(key)"></ion-icon> 
-                <ion-icon name="chevron-down-outline"(click)="toggle(key)" *ngIf="visible.includes(key)"></ion-icon> 
+              <ion-icon name="chevron-up-outline" (click)="toggle(key)" *ngIf="!visible.includes(key)"></ion-icon>
+              <ion-icon name="chevron-down-outline" (click)="toggle(key)" *ngIf="visible.includes(key)"></ion-icon>
             </div>
           </div>
         </div>
       </ion-item>
 
-           <!-- After more info clicked -->
-      <div class="ion-padding" slot="content" >
+      <!-- After more info clicked -->
+      <div class="ion-padding" slot="content">
         <!-- First  -->
         <div class="moreInfo_divs">
           <div>
-            <ion-icon name="call-outline"></ion-icon> 
+            <ion-icon name="call-outline"></ion-icon>
           </div>
           <div class="moreData">
-           {{phoneNumber}}
+            {{phoneNumber}}
           </div>
-          
+
         </div>
         <!-- second -->
         <div class="moreInfo_divs">
           <div>
             <ion-icon name="mail-outline"></ion-icon>
           </div>
-          
+
           <div class="moreData">
             {{emailAddress}}
           </div>
@@ -78,17 +75,17 @@
           <div>
             <ion-icon name="people-outline"></ion-icon>
           </div>
-          
+
           <div class="moreData">
             Office capacity: {{capacity}}
           </div>
-        </div >
+        </div>
         <!-- Forth -->
         <div class="moreInfo_divs">
           <div>
             <ion-icon name="location-outline"></ion-icon>
           </div>
-          
+
           <div class="moreData">
             {{physicalAddress}}
           </div>
@@ -100,108 +97,115 @@
   </ion-accordion-group>
 
   <ion-searchbar placeholder="Search" [(ngModel)]="search" showCancelButton="focus" animated>
-    
+
   </ion-searchbar>
 
   <div class="members_in_office">
-    <h3 >
-     <b>Staff Members in Office </b> 
+    <h3>
+      <b>Staff Members in Office </b>
     </h3>
-    <h3 class="office_capacity">{{capacity}}</h3> 
+    <h3 class="office_capacity">{{capacity}}</h3>
   </div>
-                              <!-- Display staff members -->
+  <!-- Display staff members -->
 
   <ion-list class="ion-list">
-    <ion-item *ngFor="let employee of employees | filter:search" >
+    <ion-item *ngFor="let employee of employees | filter:search">
       <ion-label>
         <div class="list_firstDiv">
-          <img class="chart1" name="avatar1"  src="{{employee.avatar}}" alt=""><br><br>
+          <img class="chart1" name="avatar1" src="{{employee.avatar}}" alt=""><br><br>
           <div class="list_secondDiv">
             <div>
-              <h1 > {{ employee.firstname }}</h1>
+              <h1> {{ employee.firstname }}</h1>
             </div>
             <div>
               <h1>{{employee.lastname}}</h1>
             </div>
           </div>
-           
+
           <ion-icon class="delete_icon" name="trash-outline" (click)="delete_employee(employee.id)"> </ion-icon>
-          <ion-icon class="update_icon" routerLink='open-custom-dialog/{{employee.id}}' name="create-outline"></ion-icon>
+          <ion-icon id='open-custom-dialog' class="update_icon" name="create-outline"></ion-icon>
+          
         </div>
-        
+
       </ion-label>
     </ion-item>
   </ion-list>
 
 
-  <ion-modal id="example-modal" #modal trigger="open-custom-dialog" >
+  <ion-modal id="example-modal" #modal trigger="open-custom-dialog">
     <ng-template>
       <div class="wrapper">
         <div class="ng-template">
           <h1>New staff member</h1>
-          <ion-icon (click)="modal.dismiss()" name="close-circle-outline" size="small" ></ion-icon>
+          <ion-icon (click)="modal.dismiss()" name="close-circle-outline" size="small"></ion-icon>
         </div>
-       
+
         <ion-list lines="none">
-          <ion-item button="true" detail="false" >
+          <ion-item button="true" detail="false">
             <ion-input [(ngModel)]="firstname" name="firstname" placeholder="First name"></ion-input>
-             </ion-item>
-              <ion-item button="true" detail="false" >
+          </ion-item>
+          <ion-item button="true" detail="false">
             <ion-input name="lastname" [(ngModel)]="lastname" placeholder="Last Name"></ion-input>
           </ion-item>
-         
+
         </ion-list>
-          <h1>Avatar</h1>
-          <div style="display: flex; align-items: center; margin-left: 15px;">
-             <div class="firstRowCircles" (click)="firstAvatar()">
-              <img class="chart1"   src="../../assets/avatar-1295404__340.webp" alt="First_avatar"><br><br>
+        <h1>Avatar</h1>
+        <div style="display: flex; align-items: center; margin-left: 15px;">
+          <div class="firstRowCircles" (click)="firstAvatar()">
+            <img class="chart1" src="../../assets/avatar-1295404__340.webp" alt="First_avatar"><br><br>
           </div>
-          
-            <div (click)="secondAvatar()">
-              <img class="chart2" src="../../assets/avatar2.png" alt="sds"><br><br>
-            </div>
-          
-             <div (click)="fouthAvatar()">
-              <img class="chart3" src="../../assets/png-clipart-metro-redux-playstation-4-gnome-computer-icons-xbox-360-gnome-hat-playstation-4.png" alt="second_avatar"><br><br>
-             </div>
-          
-             <div (click)="fifthAvatar()">
-              <img class="chart4" src="../../assets/png-clipart-leafyishere-youtuber-drawing-portrait-miscellaneous-face.png" alt="third_avatar"><br><br>
-             </div>
-             
-            
+
+          <div (click)="secondAvatar()">
+            <img class="chart2" src="../../assets/avatar2.png" alt="sds"><br><br>
           </div>
-        
-          <div style="display: flex; align-items: center; margin-left: 35px;">
 
-            <div class="firstRowCircles" (click)="fifthAvatar()">
-              <img class="chart5"  src="../../assets/png-clipart-fortnite-battle-royale-playstation-4-playerunknown-s-battlegrounds-xbox-one-ninja-hat-video-game.png" alt="fourth_avatar"><br><br>
+          <div (click)="fouthAvatar()">
+            <img class="chart3"
+              src="../../assets/png-clipart-metro-redux-playstation-4-gnome-computer-icons-xbox-360-gnome-hat-playstation-4.png"
+              alt="second_avatar"><br><br>
+          </div>
+
+          <div (click)="fifthAvatar()">
+            <img class="chart4"
+              src="../../assets/png-clipart-leafyishere-youtuber-drawing-portrait-miscellaneous-face.png"
+              alt="third_avatar"><br><br>
+          </div>
+
+
+        </div>
+
+        <div style="display: flex; align-items: center; margin-left: 35px;">
+
+          <div class="firstRowCircles" (click)="fifthAvatar()">
+            <img class="chart5"
+              src="../../assets/png-clipart-fortnite-battle-royale-playstation-4-playerunknown-s-battlegrounds-xbox-one-ninja-hat-video-game.png"
+              alt="fourth_avatar"><br><br>
 
           </div>
-          
-            
-            <div (click)="sixthAvatar()">
-              <img class="chart6"  src="../../assets/iceman.png" alt="sixth_avatar"><br><br>
 
-            </div>
-            <div (click)="seventhAvatar()">
-              <img class="chart7"  src="../../assets/spid.png" alt="seventh_avatar"><br><br>
 
-            </div>
-           </div>
-       
-        <ion-button class="ion-button"  (click)="addEmployees(); model.dismiss() ">ADD STAFF MEMBER</ion-button>
-        
-     
+          <div (click)="sixthAvatar()">
+            <img class="chart6" src="../../assets/iceman.png" alt="sixth_avatar"><br><br>
+
+          </div>
+          <div (click)="seventhAvatar()">
+            <img class="chart7" src="../../assets/spid.png" alt="seventh_avatar"><br><br>
+
+          </div>
+        </div>
+
+        <ion-button class="ion-button" (click)="addEmployees(); model.dismiss() ">ADD STAFF MEMBER</ion-button>
+
+
       </div>
     </ng-template>
   </ion-modal>
 
- 
 
 
-  <ion-fab vertical="bottom" horizontal="end" slot="fixed"  >
-    <ion-fab-button id="open-custom-dialog"  style="--background: #0D4477;" >
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button id="open-custom-dialog" style="--background: #0D4477;">
       <ion-icon name="add-outline"></ion-icon>
     </ion-fab-button>
   </ion-fab>

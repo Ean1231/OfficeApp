@@ -3,8 +3,8 @@
 <ion-content [fullscreen]="true">
   <div >
     <h1 class="heading">All Offices</h1><br>
-<div  *ngFor="let office of Offices" >
-  <ion-accordion-group style="border-left: 10px solid {{office.firstcolor}}"  class="group">
+  <div  *ngFor="let office of Offices" >
+   <ion-accordion-group style="border-left: 10px solid {{office.firstcolor}};"  class="group">
     <ion-accordion class="accordion"  toggleIconSlot="enjd"  value="first"  >
 
       <ion-item slot="header"  style="padding: 5px;">
@@ -18,12 +18,10 @@
               <div>
                 <ion-icon name="pencil-outline" class="pencil_icon"  routerLink='/add-office/{{office.id}}' ></ion-icon>
               </div>
-
               <div >   
                 <ion-icon class="view_icon" name="eye-outline" routerLink='/office-view/{{office.id}}' ></ion-icon>
               </div>
-            </div>
-            
+            </div> 
           </div>
           <!-- Members number of staff -->
           

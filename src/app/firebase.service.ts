@@ -9,11 +9,12 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class FirebaseService {
-collection = 'Offices';
-collectionData = 'employees'
+ collection = 'Offices';
+ collectionData = 'employees'
+
   constructor(private firestore: AngularFirestore, private fire: Firestore) { }
 
-  //Employees service
+  //Employees services
   update_employee(id,data){
     return this.firestore.doc(this.collectionData + '/' + id).update(data);
   }
@@ -34,7 +35,7 @@ collectionData = 'employees'
     return this.firestore.collection(this.collectionData).doc(id).valueChanges();
   }
 
-  //Office Service
+  //Office Services
   getOffices(){
     return this.firestore.collection(this.collection).snapshotChanges();
   }
