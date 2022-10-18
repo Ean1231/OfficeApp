@@ -182,6 +182,7 @@ ion-content{
 }
 .arrow-icon{
   font-size: 2rem;
+  margin-top: 5px;
 }
 .arrow-icon:focus{
   outline: none;
@@ -223,4 +224,56 @@ ion-content{
   border-top: 0.4px solid rgba(232, 243, 252, 1); 
   border-bottom: 0.1px solid rgba(232, 243, 252, 1); 
   border-right: 0.1px solid rgba(232, 243, 252, 1);
+}.horizontal_line{
+  border: px solid black; 
+  height: -0; 
+  margin-top: -20px; 
+  width: 450px; 
+  margin-left: 18px; 
+  padding-left: -260px;
+}.more_info{
+  margin-top: -10px; 
+  font-size:12px; 
+  border-top: 0.4px solid #0D4477; 
+  padding-left: 100px; 
+  padding-top: 10px; 
+  display: flex; 
+  gap: 5px;
+}.Arrow_div{
+  margin-top: 13px;
+}.moreInfo_divs{
+  display: flex; 
+  gap: 10px; 
+  margin-bottom: 10px;
+  font-size: 14px;
+}.members_in_office{
+  display: flex; 
+  gap: 80px; 
+  margin:15px;
+}.office_capacity{
+  margin-top: 17px;
+}.ion-list{
+  margin: 15px;
+}.list_firstDiv{
+  display: flex; 
+  gap: 10px;
+}.list_secondDiv{
+  display: flex; 
+  margin-top: 10px; 
+  gap:7px;
+}.delete_icon{
+  right: 0; 
+  position: absolute; 
+  margin-top:20px; 
+  color: red;
+}.update_icon{
+  right: 27px; 
+  position: absolute; 
+  margin-top:20px; 
+  color: blue;
+}.ng-template{
+  display: flex;
+}.ion-button{
+  margin-left: 20%; 
+  border-radius: 25PX;
 }

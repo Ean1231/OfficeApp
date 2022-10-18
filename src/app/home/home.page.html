@@ -4,23 +4,23 @@
   <div >
     <h1 class="heading">All Offices</h1><br>
 <div  *ngFor="let office of Offices" >
-  <ion-accordion-group style="border-left: 10px solid {{office.firstcolor}};"  class="group">
+  <ion-accordion-group style="border-left: 10px solid {{office.firstcolor}}"  class="group">
     <ion-accordion class="accordion"  toggleIconSlot="enjd"  value="first"  >
 
       <ion-item slot="header"  style="padding: 5px;">
         <div>
           <!-- card header -->
-          <div style="display: flex; gap: 188px; ">
+          <div class="card_header" >
             <div >
               <ion-label class="companyName">{{office.officeName}}</ion-label><br>
             </div>
-            <div style="display: flex; gap: 30px; margin-top: 20px;">
+            <div class="icon_div">
               <div>
-                <ion-icon name="pencil-outline"  style=" right: 15; position: absolute; color: #0D4477;" routerLink='/add-office/{{office.id}}' ></ion-icon>
+                <ion-icon name="pencil-outline" class="pencil_icon"  routerLink='/add-office/{{office.id}}' ></ion-icon>
               </div>
 
               <div >   
-                <ion-icon  style=" left: 115; position: absolute; color: #0D4477;"  name="eye-outline" routerLink='/office-view/{{office.id}}' ></ion-icon>
+                <ion-icon class="view_icon" name="eye-outline" routerLink='/office-view/{{office.id}}' ></ion-icon>
               </div>
             </div>
             
@@ -29,7 +29,7 @@
           
           <div class="members">
             <div>
-              <img   class="staff" src="assets/staff2.png" alt="">
+              <img class="staff" src="assets/staff2.png" alt="">
             </div>
             <div>
               <p class="firstParagraph">
@@ -38,15 +38,15 @@
             </div>
           </div>
           <!-- more info -->
-          <hr style=" border: px solid black; height: -0; margin-top: -20px; width: 450px; margin-left: 18px; padding-left: -260px; "><br>
-          <div style="margin-top: -10px; font-size:12px; border-top: 0.4px solid #0D4477; padding-left: 100px; padding-top: 10px; display: flex; gap: 5px;">
+          <hr class="moreInfo" ><br>
+          <div class="moreInfo_second" >
             <div>
               <p>More info</p>
             </div>
 
-            <div style="margin-top: 13px;">
-                <ion-icon name="chevron-up-outline" (click)="toggle(key)" *ngIf="!visible.includes(key)" style="color: #0D4477;"></ion-icon> 
-                <ion-icon name="chevron-down-outline"(click)="toggle(key)" *ngIf="visible.includes(key)" style="color: #0D4477;"></ion-icon> 
+            <div class="arrow">
+                <ion-icon name="chevron-up-outline" (click)="toggle(key)" *ngIf="!visible.includes(key)" ></ion-icon> 
+                <ion-icon name="chevron-down-outline"(click)="toggle(key)" *ngIf="visible.includes(key)" ></ion-icon> 
             </div>
           </div>
         </div>
@@ -54,51 +54,49 @@
 <!-- After more info clicked -->
       <div class="ion-padding" slot="content" >
         <!-- First  -->
-        <div style="display: flex; gap: 10px; margin-bottom: 10px;">
+        <div class="first_div">
           <div>
             <ion-icon name="call-outline"></ion-icon> 
           </div>
-          <div style="font-size: 12px; color: #484954; margin-bottom:5px;">
+          <div class="displayData">
            {{office.phoneNumber}}
           </div>
           
         </div>
         <!-- second -->
-        <div style="display: flex; gap: 10px; margin-bottom: 10px;">
+        <div class="first_div">
           <div>
             <ion-icon name="mail-outline"></ion-icon>
           </div>
           
-          <div style="font-size: 12px; color: #484954; margin-bottom:5px;">
+          <div class="displayData">
             {{office.emailAddress}}
           </div>
         </div>
         <!-- Third -->
-        <div style="display: flex; gap: 10px; margin-bottom: 10px;">
+        <div class="first_div">
           <div>
             <ion-icon name="people-outline"></ion-icon>
           </div>
           
-          <div style="font-size: 12px; color: #484954; margin-bottom:5px;">
+          <div class="displayData">
             Office capacity: {{office.capacity}}
           </div>
         </div >
         <!-- Forth -->
-        <div style="display: flex; gap: 10px; margin-bottom: 10px;">
+        <div class="first_div">
           <div>
             <ion-icon name="location-outline"></ion-icon>
           </div>
           
-          <div style="font-size: 12px; color: #484954; margin-bottom:5px;">
+          <div class="displayData">
             {{office.physicalAddress}}
           </div>
         </div>
-        <!-- <ion-button  routerLink='/add-office/{{office.id}}' >sdfsar</ion-button> -->
 
       </div>
     </ion-accordion>
-   <!-- <ion-button (click)="delete_office(office.id)"></ion-button> -->
- <!-- <ion-button routerLink="/add-office/{{office.id}}">sdfsar</ion-button> -->
+ 
   </ion-accordion-group>
 </div>
    

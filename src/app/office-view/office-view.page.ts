@@ -10,15 +10,12 @@ import { FirebaseService } from '../firebase.service';
   styleUrls: ['./office-view.page.scss'],
 })
 export class OfficeViewPage implements OnInit {
- data: any;
- firstcolor :any;
- load: boolean;
-
-//  employees: Employees = null;
+  data: any;
+  firstcolor :any;
+  load: boolean;
   avatar: any;
   search: string;
   employees = [];
-  @Input() identity: string;
   isEdit: boolean;
   officeName: string;
   physicalAddress: any;
@@ -27,7 +24,6 @@ export class OfficeViewPage implements OnInit {
   emailAddress: any;
   phoneNumber: number;
   capacity: number;
-  green: '#00FF00';
   id: any;
   type: string;
   loading: boolean;
@@ -37,6 +33,7 @@ export class OfficeViewPage implements OnInit {
 
   constructor(public modalCtrl: ModalController,private changeDefect: ChangeDetectorRef,private router: Router, private service: FirebaseService, private route: ActivatedRoute, private alertCtrl: AlertController) 
   { 
+      //Offices
     this.service.getOffices().subscribe((res) => {
       this.Offices = res.map(e => {
        return{
@@ -49,13 +46,12 @@ export class OfficeViewPage implements OnInit {
          firstcolor: e.payload.doc.data()['firstcolor']
        }
       })
-     //  console.log(this.Offices);
    },(error:any) => {
      console.log(error)
    }
    )
 
-
+      //Employees
    this.service.getemployees().subscribe((res) => {
     this.employees = res.map(e => {
      return{
@@ -63,18 +59,16 @@ export class OfficeViewPage implements OnInit {
        firstname: e.payload.doc.data()['firstname'],
        lastname: e.payload.doc.data()['lastname'],
        avatar: e.payload.doc.data()['avatar']
-   
-     }
-    })
+        }
+   })
     console.log(this.employees);
  },(error:any) => {
    console.log(error)
  })
-   
   }
 
   
-  
+  //Toogle Arrow up and down
   toggle(key) {
     var index = this.visible.indexOf(key);
     if (index > -1) {
@@ -119,27 +113,11 @@ export class OfficeViewPage implements OnInit {
          
         })
       }
-
-      
       console.log(data.type);
-     
-
     })
-
-    // this.service.getEmployees().subscribe((res) => {
-    //   console.log(res);
-    //   this.employees = res
-  
-    // })
-    //  this.data = this.router.getCurrentNavigation().extras.state;
-    // console.log(this.data)
   }
 
   addEmployees(){
-    // if(this.isEdit){
-    //   this.updateEmployee();
-    //   return;
-    // }
     let data = {
       firstname: this.firstname,
       lastname: this.lastname,
@@ -149,9 +127,6 @@ export class OfficeViewPage implements OnInit {
       console.log(res);
       this.firstname = "";
       this.lastname = ""
-      // this.loading = false;
-      // this.router.navigateByUrl('/home');
-    
     },(error:any) => {
       console.log(error, "error")
     })
@@ -170,27 +145,6 @@ export class OfficeViewPage implements OnInit {
     })
   }
 
-  
-  async openmodal() {
-    const alert = await this.alertCtrl.create({
-      buttons: [
-         {
-          text: 'Edit Staff Member',
-          handler: res => {
-            // this.service.addEmployee({ firstname: res.firstname, lastname: res.lastname});
-          }
-        },
-        {
-          text: "Delete Staff Member",
-          handler: res => {
-        this.delete_employee(this.id);
-          }
-        }
-      ]
-    });
-
-    await alert.present();
-  }
 
   delete_employee(employeeID){
     this.service.delete_employee(employeeID).then((result: any) => {
@@ -198,31 +152,7 @@ export class OfficeViewPage implements OnInit {
     })
   }
 
-  // delete_office(officeId){
-  //   this.service.delete_office(officeId).then((r: any) => {
-  //     console.log(r)
-  //     this.router.navigateByUrl('/home');
-  //   })
-  // }
 
-
-  async openMyModal() {
-    const myModal = await this.modalCtrl.create({
-      component: EmployeesPage,
-      cssClass: 'employees-modal',
-      animated: true,
-      mode: 'ios',
-      backdropDismiss: false,
-      // componentProps: {
-      //   data: data
-      // }
-
-    });
-
-
-    return await myModal.present();
-
-  }
 
   firstAvatar(){
     console.log();

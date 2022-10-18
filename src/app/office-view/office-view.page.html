@@ -2,18 +2,16 @@
 <ion-content>
   <div style="display: flex; gap: 100px;">
     <div>
-      <ion-icon class="arrow-icon" style="margin-top: 5px;" name="arrow-back-outline" class="ion-padding" routerLink="/home"></ion-icon>
+      <ion-icon class="arrow-icon"  name="arrow-back-outline" class="ion-padding" routerLink="/home"></ion-icon>
     </div>
     <div>
       <h3>Office</h3>
     </div>
-     
   </div>
 
 
   <ion-accordion-group style="border-left: 10px solid {{firstcolor}}"  class="group">
-    <ion-accordion  toggleIconSlot="enjd"  value="first">
-
+    <ion-accordion toggleIconSlot="enjd"  value="first">
       <ion-item slot="header" class="accordion" >
         <div>
           <!-- card header -->
@@ -26,8 +24,8 @@
               <ion-icon name="pencil-outline"  routerLink='/add-office/{{id}}' ></ion-icon>
             </div>
           </div>
+
           <!-- Members number of staff -->
-          
           <div class="members">
             <div>
               <img routerLink='/office-view/{{id}}'  class="staff" src="assets/staff2.png" alt="">
@@ -39,13 +37,13 @@
             </div>
           </div>
           <!-- more info -->
-          <hr style=" border: px solid black; height: -0; margin-top: -20px; width: 450px; margin-left: 18px; padding-left: -260px; "><br>
-          <div style="margin-top: -10px; font-size:12px; border-top: 0.4px solid #0D4477; padding-left: 100px; padding-top: 10px; display: flex; gap: 5px;">
+          <hr class="horizontal_line"><br>
+          <div class="more_info">
             <div>
               <p>More info</p>
             </div>
 
-            <div style="margin-top: 13px;">
+            <div class="Arrow_div">
                 <ion-icon name="chevron-up-outline" (click)="toggle(key)" *ngIf="!visible.includes(key)"></ion-icon> 
                 <ion-icon name="chevron-down-outline"(click)="toggle(key)" *ngIf="visible.includes(key)"></ion-icon> 
             </div>
@@ -53,45 +51,45 @@
         </div>
       </ion-item>
 
-        <!-- After more info clicked -->
+           <!-- After more info clicked -->
       <div class="ion-padding" slot="content" >
         <!-- First  -->
-        <div style="display: flex; gap: 10px; margin-bottom: 10px;">
+        <div class="moreInfo_divs">
           <div>
             <ion-icon name="call-outline"></ion-icon> 
           </div>
-          <div style="font-size: 12px; color: #484954; margin-bottom:5px;">
+          <div class="moreData">
            {{phoneNumber}}
           </div>
           
         </div>
         <!-- second -->
-        <div style="display: flex; gap: 10px; margin-bottom: 10px;">
+        <div class="moreInfo_divs">
           <div>
             <ion-icon name="mail-outline"></ion-icon>
           </div>
           
-          <div style="font-size: 12px; color: #484954; margin-bottom:5px;">
+          <div class="moreData">
             {{emailAddress}}
           </div>
         </div>
         <!-- Third -->
-        <div style="display: flex; gap: 10px; margin-bottom: 10px;">
+        <div class="moreInfo_divs">
           <div>
             <ion-icon name="people-outline"></ion-icon>
           </div>
           
-          <div style="font-size: 12px; color: #484954; margin-bottom:5px;">
+          <div class="moreData">
             Office capacity: {{capacity}}
           </div>
         </div >
         <!-- Forth -->
-        <div style="display: flex; gap: 10px; margin-bottom: 10px;">
+        <div class="moreInfo_divs">
           <div>
             <ion-icon name="location-outline"></ion-icon>
           </div>
           
-          <div style="font-size: 12px; color: #484954; margin-bottom:5px;">
+          <div class="moreData">
             {{physicalAddress}}
           </div>
         </div>
@@ -105,30 +103,30 @@
     
   </ion-searchbar>
 
-  <div style="display: flex; gap: 80px; margin:15px;">
+  <div class="members_in_office">
     <h3 >
      <b>Staff Members in Office </b> 
     </h3>
-    <h3 style="margin-top: 17px;">{{capacity}}</h3> 
+    <h3 class="office_capacity">{{capacity}}</h3> 
   </div>
                               <!-- Display staff members -->
 
-  <ion-list style="margin: 15px;">
+  <ion-list class="ion-list">
     <ion-item *ngFor="let employee of employees | filter:search" >
       <ion-label>
-        <div style="display: flex; gap: 10px;">
+        <div class="list_firstDiv">
           <img class="chart1" name="avatar1"  src="{{employee.avatar}}" alt=""><br><br>
-          <div style="display: flex; margin-top: 10px; gap:7px;">
+          <div class="list_secondDiv">
             <div>
-              <h1 style=""> {{ employee.firstname }}</h1>
+              <h1 > {{ employee.firstname }}</h1>
             </div>
             <div>
               <h1>{{employee.lastname}}</h1>
             </div>
           </div>
            
-          <ion-icon style=" right: 0; position: absolute; margin-top:20px; color: red;" name="trash-outline" (click)="delete_employee(employee.id)"> </ion-icon>
-          <ion-icon routerLink='open-custom-dialog/{{employee.id}}' style=" right: 27px; position: absolute; margin-top:20px; color: blue; "  name="create-outline"></ion-icon>
+          <ion-icon class="delete_icon" name="trash-outline" (click)="delete_employee(employee.id)"> </ion-icon>
+          <ion-icon class="update_icon" routerLink='open-custom-dialog/{{employee.id}}' name="create-outline"></ion-icon>
         </div>
         
       </ion-label>
@@ -139,27 +137,24 @@
   <ion-modal id="example-modal" #modal trigger="open-custom-dialog" >
     <ng-template>
       <div class="wrapper">
-        <div style="display: flex;">
-          
+        <div class="ng-template">
           <h1>New staff member</h1>
           <ion-icon (click)="modal.dismiss()" name="close-circle-outline" size="small" ></ion-icon>
         </div>
        
         <ion-list lines="none">
           <ion-item button="true" detail="false" >
-  
             <ion-input [(ngModel)]="firstname" name="firstname" placeholder="First name"></ion-input>
-          </ion-item>
-          <ion-item button="true" detail="false" >
+             </ion-item>
+              <ion-item button="true" detail="false" >
             <ion-input name="lastname" [(ngModel)]="lastname" placeholder="Last Name"></ion-input>
           </ion-item>
          
         </ion-list>
           <h1>Avatar</h1>
           <div style="display: flex; align-items: center; margin-left: 15px;">
-
-            <div class="firstRowCircles" (click)="firstAvatar()">
-              <img class="chart1"   src="../../assets/avatar-1295404__340.webp" alt=""><br><br>
+             <div class="firstRowCircles" (click)="firstAvatar()">
+              <img class="chart1"   src="../../assets/avatar-1295404__340.webp" alt="First_avatar"><br><br>
           </div>
           
             <div (click)="secondAvatar()">
@@ -167,11 +162,11 @@
             </div>
           
              <div (click)="fouthAvatar()">
-              <img class="chart3" src="../../assets/png-clipart-metro-redux-playstation-4-gnome-computer-icons-xbox-360-gnome-hat-playstation-4.png" alt="sds"><br><br>
+              <img class="chart3" src="../../assets/png-clipart-metro-redux-playstation-4-gnome-computer-icons-xbox-360-gnome-hat-playstation-4.png" alt="second_avatar"><br><br>
              </div>
           
              <div (click)="fifthAvatar()">
-              <img class="chart4" src="../../assets/png-clipart-leafyishere-youtuber-drawing-portrait-miscellaneous-face.png" alt="sds"><br><br>
+              <img class="chart4" src="../../assets/png-clipart-leafyishere-youtuber-drawing-portrait-miscellaneous-face.png" alt="third_avatar"><br><br>
              </div>
              
             
@@ -180,22 +175,22 @@
           <div style="display: flex; align-items: center; margin-left: 35px;">
 
             <div class="firstRowCircles" (click)="fifthAvatar()">
-              <img class="chart5"  src="../../assets/png-clipart-fortnite-battle-royale-playstation-4-playerunknown-s-battlegrounds-xbox-one-ninja-hat-video-game.png" alt="sds"><br><br>
+              <img class="chart5"  src="../../assets/png-clipart-fortnite-battle-royale-playstation-4-playerunknown-s-battlegrounds-xbox-one-ninja-hat-video-game.png" alt="fourth_avatar"><br><br>
 
           </div>
           
             
             <div (click)="sixthAvatar()">
-              <img class="chart6"  src="../../assets/iceman.png" alt="sds"><br><br>
+              <img class="chart6"  src="../../assets/iceman.png" alt="sixth_avatar"><br><br>
 
             </div>
             <div (click)="seventhAvatar()">
-              <img class="chart7"  src="../../assets/spid.png" alt="sds"><br><br>
+              <img class="chart7"  src="../../assets/spid.png" alt="seventh_avatar"><br><br>
 
             </div>
            </div>
        
-        <ion-button style="margin-left: 20%; border-radius: 25PX;" (click)="addEmployees(); model.dismiss() ">ADD STAFF MEMBER</ion-button>
+        <ion-button class="ion-button"  (click)="addEmployees(); model.dismiss() ">ADD STAFF MEMBER</ion-button>
         
      
       </div>

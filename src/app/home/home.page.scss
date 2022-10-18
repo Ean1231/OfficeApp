@@ -115,4 +115,45 @@ opacity: 0.4;
   border-top: 0.4px solid rgba(232, 243, 252, 1); 
   border-bottom: 0.1px solid rgba(232, 243, 252, 1); 
   border-right: 0.1px solid rgba(232, 243, 252, 1);
+}.card_header{
+  display: flex; gap: 188px; 
+}.icon_div{
+  display: flex; 
+  gap: 30px; 
+  margin-top: 20px;
+}.pencil_icon{
+  right: 15; 
+  position: absolute; 
+  color: #0D4477;
+}.view_icon{
+  left: 115; 
+  position: absolute; 
+  color: #0D4477;
+}.moreInfo{
+  border: px solid black; 
+  height: -0;
+   margin-top: -20px; 
+   width: 450px; 
+   margin-left: 18px;
+   padding-left: -260px;
+}.moreInfo_second{
+  margin-top: -10px; 
+  font-size:12px; 
+  border-top: 0.4px solid #0D4477; 
+  padding-left: 100px; 
+  padding-top: 10px; 
+  display: flex; 
+  gap: 5px;
+}.arrow{
+  margin-top: 13px; 
+  color: #0D4477
+}.first_div{
+  display: flex; 
+  gap: 10px; 
+  margin-bottom: 10px;
+
+}.displayData{
+  font-size: 12px; 
+  color: #484954; 
+  margin-bottom:5px;
 }
