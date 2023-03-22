@@ -1,0 +1,191 @@
+<ion-content [fullscreen]="true">
+  <div >
+    <h1 class="heading">All Offices</h1><br>
+  <div  *ngFor="let office of Offices" >
+   <ion-accordion-group style="border-left: 10px solid {{office.firstcolor}}"  class="group">
+    <ion-accordion class="accordion"  toggleIconSlot="enjd"  value="first"  >
+
+      <ion-item slot="header"  style="padding: 5px;">
+        <div>
+          <!-- card header -->
+          <div class="card_header" >
+            <div >
+              <ion-label class="companyName">{{office.officeName}}</ion-label><br>
+              <ion-icon name="pencil-outline" class="pencil_icon"  routerLink='/add-office/{{office.id}}'></ion-icon>
+              </div>
+            </div>
+            <div class="icon_div">
+              <div>
+                <ion-icon name="pencil-outline" class="pencil_icon"  routerLink='/add-office/{{office.id}}'></ion-icon>
+              </div>
+              <div >   
+                <ion-icon class="view_icon" name="eye-outline" routerLink='/office-view/{{office.id}}' ></ion-icon>
+              </div>
+            </div> 
+          </div>
+          <!-- Members number of staff -->
+          
+          <div class="members">
+            <div>
+              <img class="staff" src="assets/staff2.png" alt="">
+            </div>
+            <div>
+              <p class="firstParagraph">
+                {{office.capacity}} Staff Members in Office
+              </p>
+            </div>
+          </div>
+          <!-- more info -->
+          <hr class="moreInfo" ><br>
+          <div class="moreInfo_second" >
+            <div>
+              <p>More info</p>
+            </div>
+
+            <div class="arrow">
+                <ion-icon name="chevron-up-outline" (click)="toggle(key)" *ngIf="!visible.includes(key)" ></ion-icon> 
+                <ion-icon name="chevron-down-outline"(click)="toggle(key)" *ngIf="visible.includes(key)" ></ion-icon> 
+            </div>
+          </div>
+       
+      </ion-item>
+<!-- After more info clicked -->
+      <div class="ion-padding" slot="content" >
+        <!-- First  -->
+        <div class="first_div">
+          <div>
+            <ion-icon name="call-outline"></ion-icon> 
+          </div>
+          <div class="displayData">
+           {{office.phoneNumber}}
+          </div>
+          
+        </div>
+        <!-- second -->
+        <div class="first_div">
+          <div>
+            <ion-icon name="mail-outline"></ion-icon>
+          </div>
+          
+          <div class="displayData">
+            {{office.emailAddress}}
+          </div>
+        </div>
+        <!-- Third -->
+        <div class="first_div">
+          <div>
+            <ion-icon name="people-outline"></ion-icon>
+          </div>
+          
+          <div class="displayData">
+            Office capacity: {{office.capacity}}
+          </div>
+        </div >
+        <!-- Forth -->
+        <div class="first_div">
+          <div>
+            <ion-icon name="location-outline"></ion-icon>
+          </div>
+          
+          <div class="displayData">
+            {{office.physicalAddress}}
+          </div>
+        </div>
+
+      </div>
+    </ion-accordion>
+ 
+  </ion-accordion-group>
+</div>
+   
+  </div>
+  <div  *ngFor="let office of Offices" >
+  <ion-accordion-group class="group">
+    <!-- outside view -->
+    <ion-accordion class="accordion" style="border: 0.5px solid {{office.firstcolor}}; padding: 10px; border-radius: 15px; border-left: 10px solid {{office.firstcolor}}" value="first">
+      <ion-item slot="header" color="light">
+        <div>
+          <div style="display: flex; gap: 30px;">
+            <div class="card_header">
+              <ion-label>{{office.officeName}}</ion-label>
+            </div>
+            <div style="margin-left:98px;">
+              <ion-icon  name="pencil-outline" class="pencil_icon"  routerLink='/add-office/{{office.id}}'></ion-icon>
+            </div>
+            <div >
+              <ion-icon class="view_icon" name="eye-outline" routerLink='/office-view/{{office.id}}' ></ion-icon>
+            </div>
+          </div>
+          <br>
+          <div class="members">
+            <div>
+              <img class="staff" src="assets/staff2.png" alt="">
+            </div>
+            <div>
+              <p class="firstParagraph">
+                {{office.capacity}} Staff Members in Office
+              </p>
+            </div>
+          </div>
+        </div>
+      
+    
+
+<!-- Inside view -->
+      </ion-item>
+      <div class="ion-padding" slot="content">
+        <div class="ion-padding" slot="content" >
+          <!-- First  -->
+          <div class="first_div">
+            <div>
+              <ion-icon name="call-outline"></ion-icon> 
+            </div>
+            <div class="displayData">
+             {{office.phoneNumber}}
+            </div>
+            
+          </div>
+          <!-- second -->
+          <div class="first_div">
+            <div>
+              <ion-icon name="mail-outline"></ion-icon>
+            </div>
+            
+            <div class="displayData">
+              {{office.emailAddress}}
+            </div>
+          </div>
+          <!-- Third -->
+          <div class="first_div">
+            <div>
+              <ion-icon name="people-outline"></ion-icon>
+            </div>
+            
+            <div class="displayData">
+              Office capacity: {{office.capacity}}
+            </div>
+          </div >
+          <!-- Forth -->
+          <div class="first_div">
+            <div>
+              <ion-icon name="location-outline"></ion-icon>
+            </div>
+            
+            <div class="displayData">
+              {{office.physicalAddress}}
+            </div>
+          </div>
+  
+        </div>
+      </div>
+    </ion-accordion>
+   
+  </ion-accordion-group>
+  </div>
+  <ion-fab routerLink="/add-office/add" vertical="bottom" horizontal="end" slot="fixed"  >
+    <ion-fab-button style="--background: #0D4477;" >
+      <ion-icon name="add-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+</ion-content>

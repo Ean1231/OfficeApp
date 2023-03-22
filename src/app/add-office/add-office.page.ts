@@ -43,8 +43,6 @@ load: boolean;
      console.log(error)
    }
    )
-
-
   }
 
   ngOnInit() {
@@ -64,11 +62,7 @@ load: boolean;
           this.firstcolor = data.firstcolor
         })
       }
-
-      
       console.log(data.type);
-     
-
     })
   }
 

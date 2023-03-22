@@ -125,7 +125,6 @@ export class OfficeViewPage implements OnInit {
       console.log(res);
       this.firstname = "";
       this.lastname = "";
-      this.router.navigateByUrl('/office-view');
     },(error:any) => {
       console.log(error, "error")
     })
